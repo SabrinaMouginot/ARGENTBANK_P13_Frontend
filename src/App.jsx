@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import ProfilePage from './pages/ProfilePage';
+import HomePage from './designs/pages/HomePage';
+import LoginPage from './designs/pages/LoginPage';
+import ProfilePage from './designs/pages/ProfilePage';
 
 function App() {
-//   const [count, setCount] = useState(0)
-
   return (
     <Router>
       <Routes>
@@ -17,4 +15,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
