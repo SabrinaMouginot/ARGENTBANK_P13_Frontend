@@ -7,7 +7,7 @@ function HomePage() {
         <a className="main-nav-logo" href="/">
           <img
             className="main-nav-logo-image"
-            src="/img/argentBankLogo.png"
+            src="../../assets/argentBankLogo.png"
             alt="Argent Bank Logo"
           />
           <h1 className="sr-only">Argent Bank</h1>
@@ -32,7 +32,7 @@ function HomePage() {
         <section className="features">
           <h2 className="sr-only">Features</h2>
           <div className="feature-item">
-            <img src="/img/icon-chat.png" alt="Chat Icon" className="feature-icon" />
+            <img src="../../assets/icon-chat.png" alt="Chat Icon" className="feature-icon" />
             <h3 className="feature-item-title">You are our #1 priority</h3>
             <p>
               Need to talk to a representative? You can get in touch through our
@@ -41,7 +41,7 @@ function HomePage() {
           </div>
           <div className="feature-item">
             <img
-              src="/img/icon-money.png"
+              src="../../assets/icon-money.png"
               alt="Money Icon"
               className="feature-icon"
             />
@@ -52,7 +52,7 @@ function HomePage() {
           </div>
           <div className="feature-item">
             <img
-              src="/img/icon-security.png"
+              src="../../assets/icon-security.png"
               alt="Security Icon"
               className="feature-icon"
             />
