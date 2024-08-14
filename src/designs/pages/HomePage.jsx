@@ -1,4 +1,8 @@
 import '../css/main.css';
+import argentBankLogo from '../../../public/argentBankLogo.png'
+import iconChat from '../../../public/iconChat.png'
+import iconMoney from '../../../public/iconMoney.png'
+import iconSecurity from '../../../public/iconSecurity.png'
 
 function HomePage() {
   return (
@@ -7,7 +11,7 @@ function HomePage() {
         <a className="main-nav-logo" href="/">
           <img
             className="main-nav-logo-image"
-            src="../../assets/argentBankLogo.png"
+            src={argentBankLogo}
             alt="Argent Bank Logo"
           />
           <h1 className="sr-only">Argent Bank</h1>
@@ -32,7 +36,7 @@ function HomePage() {
         <section className="features">
           <h2 className="sr-only">Features</h2>
           <div className="feature-item">
-            <img src="../../assets/icon-chat.png" alt="Chat Icon" className="feature-icon" />
+            <img src={iconChat} alt="Chat Icon" className="feature-icon" />
             <h3 className="feature-item-title">You are our #1 priority</h3>
             <p>
               Need to talk to a representative? You can get in touch through our
@@ -41,7 +45,7 @@ function HomePage() {
           </div>
           <div className="feature-item">
             <img
-              src="../../assets/icon-money.png"
+              src={iconMoney}
               alt="Money Icon"
               className="feature-icon"
             />
@@ -52,7 +56,7 @@ function HomePage() {
           </div>
           <div className="feature-item">
             <img
-              src="../../assets/icon-security.png"
+              src={iconSecurity}
               alt="Security Icon"
               className="feature-icon"
             />
