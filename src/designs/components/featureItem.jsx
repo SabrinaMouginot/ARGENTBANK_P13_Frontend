@@ -1,4 +1,6 @@
-function featureItem({ imgSrc, title, description }) {
+import PropTypes from 'prop-types';
+
+function FeatureItem({ imgSrc, title, description }) {
   return (
     <div className="feature-item">
       <img src={imgSrc} alt={`${title} Icon`} className="feature-icon" />
@@ -8,4 +10,10 @@ function featureItem({ imgSrc, title, description }) {
   );
 }
 
-export default featureItem;
+FeatureItem.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
+
+export default FeatureItem;

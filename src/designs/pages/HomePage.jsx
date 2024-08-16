@@ -1,7 +1,7 @@
 import '../css/main.css';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import FeatureItem from '../components/featureItem';
+import FeatureItem from '../components/FeatureItem';
 import iconChat from '/iconChat.png';
 import iconMoney from '/iconMoney.png';
 import iconSecurity from '/iconSecurity.png';
