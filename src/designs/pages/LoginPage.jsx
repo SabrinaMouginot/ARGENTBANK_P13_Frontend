@@ -1,5 +1,5 @@
 import '../css/main.css';
-import argentBankLogo from '../../../public/argentBankLogo.png'
+import argentBankLogo from '/argentBankLogo.png';
 
 function LoginPage() {
   return (
