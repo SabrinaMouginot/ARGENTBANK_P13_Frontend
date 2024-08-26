@@ -9,8 +9,8 @@ function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  
-    const handleSubmit = (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     const [firstName, lastName] = username.split(' ');
     dispatch(login({ firstName, lastName, password }));
@@ -25,11 +25,21 @@ function LoginPage() {
           <form>
             <div className="input-wrapper">
               <label htmlFor="username">Username</label>
-              <input type="text" id="username" />
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required />
             </div>
             <div className="input-wrapper">
               <label htmlFor="password">Password</label>
-              <input type="password" id="password" />
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required />
             </div>
             <div className="input-remember">
               <input type="checkbox" id="remember-me" />
