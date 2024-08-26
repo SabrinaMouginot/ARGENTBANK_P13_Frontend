@@ -1,8 +1,11 @@
 import '../css/main.css';
 import Header from '../components/header';
 import Footer from '../components/footer';
+import { useState } from 'react';
 
 function LoginPage() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   return (
     <div>
       <Header />
