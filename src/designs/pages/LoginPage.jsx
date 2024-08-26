@@ -2,10 +2,17 @@ import '../css/main.css';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import { useState } from 'react';
+import { login } from '../../slices/authSlice';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  
+    const handleSubmit = (e) => {
+    e.preventDefault();
+    const [firstName, lastName] = username.split(' ');
+    login({ firstName, lastName, password });
+  };
   return (
     <div>
       <Header />
