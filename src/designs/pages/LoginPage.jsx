@@ -2,16 +2,18 @@ import '../css/main.css';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { login } from '../../slices/authSlice';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
   
     const handleSubmit = (e) => {
     e.preventDefault();
     const [firstName, lastName] = username.split(' ');
-    login({ firstName, lastName, password });
+    dispatch(login({ firstName, lastName, password }));
   };
   return (
     <div>
