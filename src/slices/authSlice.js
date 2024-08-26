@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const authSlice = createSlice({
-  name: 'auth'
-
+  name: 'auth',
+  reducers: {}
 });
 
 export default authSlice.reducer;
