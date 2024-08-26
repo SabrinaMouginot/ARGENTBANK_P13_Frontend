@@ -22,7 +22,11 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.token = null;
     },
-  }
+  },
+  extraReducers: (builder) => {
+    builder
+
+  },
 });
 
 export const { logout } = authSlice.actions;
