@@ -15,6 +15,7 @@ function LoginPage() {
     const [firstName, lastName] = username.split(' ');
     dispatch(login({ firstName, lastName, password }));
   };
+
   return (
     <div>
       <Header />
@@ -30,7 +31,8 @@ function LoginPage() {
                 id="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                required />
+                required
+              />
             </div>
             <div className="input-wrapper">
               <label htmlFor="password">Password</label>
@@ -39,13 +41,14 @@ function LoginPage() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required />
+                required
+              />
             </div>
             <div className="input-remember">
               <input type="checkbox" id="remember-me" />
               <label htmlFor="remember-me">Remember me</label>
             </div>
-            <a href="/profile" className="sign-in-button">Sign In</a>
+            <button type="submit" className="sign-in-button">Sign In</button>
           </form>
         </section>
       </main>
