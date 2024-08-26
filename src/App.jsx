@@ -3,10 +3,11 @@ import HomePage from './designs/pages/HomePage';
 import LoginPage from './designs/pages/LoginPage';
 import ProfilePage from './designs/pages/ProfilePage';
 import { Provider } from 'react-redux';
+import { store } from './store'; 
 
 function App() {
   return (
-    <Provider>
+    <Provider store={store}>
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
