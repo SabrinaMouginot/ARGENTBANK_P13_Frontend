@@ -3,11 +3,13 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { login } from '../../slices/authSlice';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { isAuthenticated, loading } = useSelector(state => state.auth)
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -47,7 +49,7 @@ function LoginPage() {
               <input type="checkbox" id="remember-me" />
               <label htmlFor="remember-me">Remember me</label>
             </div>
-            <button type="submit" className="sign-in-button">Sign In</button>
+            <button type="submit" disabled={loading} className="sign-in-button">{loading ? "Loading..." : "Sign In"}</button>
           </form>
         </section>
       </main>
