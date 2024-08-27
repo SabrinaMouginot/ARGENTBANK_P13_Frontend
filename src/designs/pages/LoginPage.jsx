@@ -9,7 +9,7 @@ import { login } from '../../slices/authSlice';
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { isAuthenticated, loading } = useSelector(state => state.auth)
+  const { error, isAuthenticated, loading } = useSelector(state => state.auth)
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -51,6 +51,7 @@ function LoginPage() {
             </div>
             <button type="submit" disabled={loading} className="sign-in-button">{loading ? "Loading..." : "Sign In"}</button>
           </form>
+          <p>{error}</p>
         </section>
       </main>
       <Footer />
