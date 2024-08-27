@@ -6,14 +6,13 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../slices/authSlice';
 
 function LoginPage() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const [firstName, lastName] = username.split(' ');
-    dispatch(login({ firstName, lastName, password }));
+    dispatch(login({ email, password }));
   };
 
   return (
@@ -29,8 +28,8 @@ function LoginPage() {
               <input
                 type="text"
                 id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
