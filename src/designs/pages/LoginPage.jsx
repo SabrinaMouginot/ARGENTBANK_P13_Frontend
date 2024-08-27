@@ -1,16 +1,23 @@
 import '../css/main.css';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../slices/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { error, isAuthenticated, loading } = useSelector(state => state.auth)
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() =>{
+    if (isAuthenticated) {
+      navigate("/Profile")
+    }
+  }, [isAuthenticated])
 
   const handleSubmit = (e) => {
     e.preventDefault();
