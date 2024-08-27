@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import argentBankLogo from '/argentBankLogo.png';
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../slices/authSlice';
 
 function Header() {
   const { isAuthenticated } = useSelector(state => state.auth)
+  const dispatch = useDispatch();
 
-
-
+  const onLogout = () => {
+    dispatch(logout())
+  }
 
   return (
     <nav className="main-nav">
@@ -23,7 +25,7 @@ function Header() {
             <span>Steve</span>
           </div>
           }
-
+          <span onClick={onLogout}>{isAuthenticated ? "Sign Out" : "Sign In"}</span>
         </Link>
       </div>
     </nav>
