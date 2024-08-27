@@ -9,9 +9,14 @@ const initialState = {
 };
 
 // Thunk pour faire l'appel API de connexion
-export const login = createAsyncThunk('auth/login', async (credentials) => {
-  const response = await axios.post('/api/auth/login', credentials);
-  return response.data;
+export const login = createAsyncThunk('auth/login', async (credentials, {rejectWithValue}) => {
+  try {
+    const response = await axios.post('http://localhost:3001/api/v1/user/login', credentials);
+    console.log (response)
+    return response.data;
+  } catch (e) {
+    return rejectWithValue(e.response.data.message)
+  }
 });
 
 const authSlice = createSlice({
@@ -34,8 +39,7 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.loading = false;
       })
-      .addCase(login.rejected, (state, action) => {
-        state.error = action.error.message;
+      .addCase(login.rejected, (state) => {
         state.loading = false;
       });
   },
