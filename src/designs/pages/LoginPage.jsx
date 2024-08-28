@@ -13,11 +13,11 @@ function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() =>{
+  useEffect(() => {
     if (isAuthenticated) {
-      navigate("/Profile")
+      navigate("/Profile");
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
