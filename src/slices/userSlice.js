@@ -19,7 +19,14 @@ export const fetchUserData = createAsyncThunk('user/fetchUserData', async (token
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {}
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUserData.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+  },
 });
 
 export default userSlice.reducer;
