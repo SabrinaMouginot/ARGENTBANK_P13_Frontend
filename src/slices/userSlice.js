@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+// Création de userSlice avec l'état initial pour firstName, lastName, loading et error
 const initialState = {
   firstName: '',
   lastName: '',
@@ -16,6 +17,7 @@ export const fetchUserData = createAsyncThunk('user/fetchUserData', async (token
   return response.data.body;
 });
 
+// Configuration des reducers pour gérer les états (pending, fulfilled et rejected)
 const userSlice = createSlice({
   name: 'user',
   initialState,

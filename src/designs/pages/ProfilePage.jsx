@@ -11,6 +11,7 @@ function ProfilePage() {
   const { firstName, lastName, loading, error } = useSelector((state) => state.user);
   const token = useSelector((state) => state.auth.token);
 
+  // Déclencher l'appel à fetchUserData lorsqu'un token est présent
   useEffect(() => {
     if (token) {
       dispatch(fetchUserData(token));
