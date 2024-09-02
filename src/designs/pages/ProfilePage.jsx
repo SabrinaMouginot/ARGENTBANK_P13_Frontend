@@ -2,8 +2,19 @@ import '../css/main.css';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import BankAccount from '../components/BankAccount';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchUserData } from '../../slices/userSlice';
 
 function ProfilePage() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchUserData(token));
+    }
+  }, [token, dispatch]);
   return (
     <div>
       <Header />
