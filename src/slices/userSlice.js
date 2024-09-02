@@ -27,6 +27,7 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchUserData.fulfilled, (state, action) => {
+        console.log('User data fetched:', action.payload);
         state.firstName = action.payload.firstName;
         state.lastName = action.payload.lastName;
         state.loading = false;
