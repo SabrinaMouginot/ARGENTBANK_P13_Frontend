@@ -5,7 +5,7 @@ import { logout } from '../../slices/authSlice';
 
 function Header() {
   const { isAuthenticated } = useSelector(state => state.auth)
-  // const { firstName } = useSelector((state) => state.user);
+  const { firstName } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const onLogout = () => {
@@ -23,8 +23,7 @@ function Header() {
           {
             isAuthenticated && <div>
             <i className="fa fa-user-circle"></i>
-            <span>Steve</span>
-            {/* <span>{firstName}</span> */}
+            <span>{firstName}</span>
           </div>
           }
           <span onClick={onLogout}>{isAuthenticated ? "Sign Out" : "Sign In"}</span>
