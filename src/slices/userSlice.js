@@ -7,11 +7,12 @@ const initialState = {
   lastName: '',
   loading: false,
   error: null,
+  isEditing: false
 };
 
 // Thunk pour récupérer les données du profil utilisateur
 export const fetchUserData = createAsyncThunk('user/fetchUserData', async (token) => {
-  const response = await axios.get('http://localhost:3001/api/user/profile', {
+  const response = await axios.post('http://localhost:3001/api/v1/user/profile', {}, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data.body;
@@ -21,7 +22,11 @@ export const fetchUserData = createAsyncThunk('user/fetchUserData', async (token
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    toggleEditForm: (state) => {
+      state.isEditing = !state.isEditing
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUserData.pending, (state) => {
@@ -41,4 +46,5 @@ const userSlice = createSlice({
   },
 });
 
+export const { toggleEditForm } = userSlice.actions;
 export default userSlice.reducer;
