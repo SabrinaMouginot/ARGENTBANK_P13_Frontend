@@ -4,7 +4,7 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import BankAccount from '../components/BankAccount';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserData, toggleEditForm } from '../../slices/userSlice';
+import { fetchUserData, toggleEditForm, updateUserData } from '../../slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 function ProfilePage() {
@@ -36,8 +36,9 @@ function ProfilePage() {
     const submit = (e) => {
       e.preventDefault()
 
-
-      dispatch(toggleEditForm())
+    // Appel de la fonction asynchrone pour mettre à jour les données utilisateur
+    dispatch(updateUserData({ token, firstName: newFirstName, lastName: newLastName }));
+      // dispatch(toggleEditForm())
     }
 
     const editMode = () => {
