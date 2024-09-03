@@ -33,23 +33,23 @@ function ProfilePage() {
 
 
 
-    const submit = (e) => {
-      e.preventDefault()
+  const submit = (e) => {
+    e.preventDefault()
 
     // Appel de la fonction asynchrone pour mettre à jour les données utilisateur
     dispatch(updateUserData({ token, firstName: newFirstName, lastName: newLastName }));
-      // dispatch(toggleEditForm())
-    }
+    // dispatch(toggleEditForm())
+  }
 
-    const editMode = () => {
-      dispatch(toggleEditForm())
-    }
+  const editMode = () => {
+    dispatch(toggleEditForm())
+  }
 
-    return (
-      <div>
-        <Header />
-        <main className="main bg-dark">
-{/* 
+  return (
+    <div>
+      <Header />
+      <main className="main bg-dark">
+        {/* 
           {
             !isEditing ? <div className="header">
 
@@ -68,7 +68,7 @@ function ProfilePage() {
               </form>
           } */}
 
-{
+        {
           loading ? <p>Loading...</p> : !isEditing ? (
             <div className="header">
               <h1>Welcome back<br />{firstName} {lastName}!</h1>
@@ -76,45 +76,50 @@ function ProfilePage() {
             </div>
           ) : (
             <form onSubmit={submit} className="edit-form">
-              <input
-                type="text"
-                value={newFirstName}
-                onChange={(e) => setNewFirstName(e.target.value)}
-                placeholder="First Name"
-              />
-              <input
-                type="text"
-                value={newLastName}
-                onChange={(e) => setNewLastName(e.target.value)}
-                placeholder="Last Name"
-              />
-              <button onClick={editMode} className="edit-button">Cancel</button>
-              <button className="edit-button" type='submit'>Submit</button>
+              <div className="inputs-wrapper">
+                <input
+                  type="text"
+                  value={newFirstName}
+                  onChange={(e) => setNewFirstName(e.target.value)}
+                  placeholder="First Name"
+                />
+                <input
+                  type="text"
+                  value={newLastName}
+                  onChange={(e) => setNewLastName(e.target.value)}
+                  placeholder="Last Name"
+                />
+              </div>
+              <div className="buttons-wrapper">
+                <button className="edit-button" type="submit">Save</button>
+                <button onClick={editMode} className="edit-button">Cancel</button>
+              </div>
             </form>
+
           )
         }
 
-          <h2 className="sr-only">Accounts</h2>
-          <BankAccount
-            title="Argent Bank Checking (x8349)"
-            amount="$2,082.79"
-            description="Available Balance"
-          />
-          <BankAccount
-            title="Argent Bank Savings (x6712)"
-            amount="$10,928.42"
-            description="Available Balance"
-          />
-          <BankAccount
-            title="Argent Bank Credit Card (x8349)"
-            amount="$184.30"
-            description="Current Balance"
-          />
+        <h2 className="sr-only">Accounts</h2>
+        <BankAccount
+          title="Argent Bank Checking (x8349)"
+          amount="$2,082.79"
+          description="Available Balance"
+        />
+        <BankAccount
+          title="Argent Bank Savings (x6712)"
+          amount="$10,928.42"
+          description="Available Balance"
+        />
+        <BankAccount
+          title="Argent Bank Credit Card (x8349)"
+          amount="$184.30"
+          description="Current Balance"
+        />
 
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+      </main>
+      <Footer />
+    </div>
+  );
+}
 
-  export default ProfilePage;
+export default ProfilePage;

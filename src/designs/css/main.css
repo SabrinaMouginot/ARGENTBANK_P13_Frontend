@@ -289,3 +289,32 @@ body {
     width: 200px;
   }
 }
+
+
+
+.edit-form { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; 
+ }
+
+.inputs-wrapper {
+  display: flex;
+  gap: 20px; 
+  justify-content: center; 
+}
+
+.inputs-wrapper input {
+  padding: 10px;
+}
+
+.buttons-wrapper {
+  display: flex;
+  gap: 20px; 
+  justify-content: center; 
+}
+
+.edit-button {
+  padding: 10px;
+}
