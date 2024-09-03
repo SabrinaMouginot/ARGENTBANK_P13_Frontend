@@ -21,8 +21,8 @@ export const fetchUserData = createAsyncThunk('user/fetchUserData', async (token
 // Thunk pour mettre à jour les données du profil utilisateur
 export const updateUserData = createAsyncThunk('user/updateUserData', async ({ token, firstName, lastName }, { rejectWithValue }) => {
   try {
-    const response = await axios.put('http://localhost:3001/api/v1/user/profile', 
-      { firstName, lastName }, 
+    const response = await axios.put('http://localhost:3001/api/v1/user/profile',
+      { firstName, lastName },
       { headers: { Authorization: `Bearer ${token}` } }
     );
     return response.data.body;
@@ -56,7 +56,12 @@ const userSlice = createSlice({
       .addCase(fetchUserData.rejected, (state, action) => {
         state.error = action.error.message;
         state.loading = false;
-      });
+      })
+      // Pour updateUserData (nouveau)
+      .addCase(updateUserData.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
   },
 });
 
