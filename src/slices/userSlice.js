@@ -62,6 +62,12 @@ const userSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
+      .addCase(updateUserData.fulfilled, (state, action) => {
+        state.firstName = action.payload.firstName;
+        state.lastName = action.payload.lastName;
+        state.loading = false;
+        state.isEditing = false; // Sortir du mode édition une fois la mise à jour terminée
+      })
   },
 });
 
