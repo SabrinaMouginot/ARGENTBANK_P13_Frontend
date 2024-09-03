@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ProfilePage() {
   const dispatch = useDispatch();
-  const { firstName, lastName, error, isEditing } = useSelector((state) => state.user);
+  const { firstName, lastName, error, isEditing, loading } = useSelector((state) => state.user);
   const token = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
 
@@ -49,7 +49,7 @@ function ProfilePage() {
       <div>
         <Header />
         <main className="main bg-dark">
-
+{/* 
           {
             !isEditing ? <div className="header">
 
@@ -66,7 +66,34 @@ function ProfilePage() {
                 <button onClick={editMode} className="edit-button">Cancel</button>
                 <button className="edit-button" type='submit' >Submit</button>
               </form>
-          }
+          } */}
+
+{
+          loading ? <p>Loading...</p> : !isEditing ? (
+            <div className="header">
+              <h1>Welcome back<br />{firstName} {lastName}!</h1>
+              <button onClick={editMode} className="edit-button">Edit Name</button>
+            </div>
+          ) : (
+            <form onSubmit={submit} className="edit-form">
+              <input
+                type="text"
+                value={newFirstName}
+                onChange={(e) => setNewFirstName(e.target.value)}
+                placeholder="First Name"
+              />
+              <input
+                type="text"
+                value={newLastName}
+                onChange={(e) => setNewLastName(e.target.value)}
+                placeholder="Last Name"
+              />
+              <button onClick={editMode} className="edit-button">Cancel</button>
+              <button className="edit-button" type='submit'>Submit</button>
+            </form>
+          )
+        }
+
           <h2 className="sr-only">Accounts</h2>
           <BankAccount
             title="Argent Bank Checking (x8349)"
