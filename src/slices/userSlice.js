@@ -11,11 +11,16 @@ const initialState = {
 };
 
 // Thunk pour récupérer les données du profil utilisateur
-export const fetchUserData = createAsyncThunk('user/fetchUserData', async (token) => {
-  const response = await axios.post('http://localhost:3001/api/v1/user/profile', {}, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  return response.data.body;
+export const fetchUserData = createAsyncThunk('user/fetchUserData', async (token,{rejectWithValue}) => {
+  try {
+    const response = await axios.post('http://localhost:3001/api/v1/user/profile', {}, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data.body;
+  } catch (e) {
+    return rejectWithValue(e.response.data.message);
+  }
+
 });
 
 // Thunk pour mettre à jour les données du profil utilisateur
@@ -48,7 +53,6 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchUserData.fulfilled, (state, action) => {
-        console.log('User data fetched:', action.payload);
         state.firstName = action.payload.firstName;
         state.lastName = action.payload.lastName;
         state.loading = false;
