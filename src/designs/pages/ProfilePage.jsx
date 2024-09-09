@@ -49,25 +49,6 @@ function ProfilePage() {
     <div>
       <Header />
       <main className="main bg-dark">
-        {/* 
-          {
-            !isEditing ? <div className="header">
-
-              <p>Loading...</p>
-
-              <h1>Welcome back<br />{firstName} {lastName}!</h1>
-
-              <button onClick={editMode} className="edit-button">Edit Name</button>
-            </div>
-              :
-              <form onSubmit={submit} >
-                <input type="text" name="firstName" />
-                <input type="text" name='lastName' />
-                <button onClick={editMode} className="edit-button">Cancel</button>
-                <button className="edit-button" type='submit' >Submit</button>
-              </form>
-          } */}
-
         {
           loading ? <p>Loading...</p> : !isEditing ? (
             <div className="header">
