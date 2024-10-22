@@ -22,7 +22,7 @@ function ProfilePage() {
     if (token) {
       dispatch(fetchUserData(token));
     } else if (!token || error) {
-      navigate("/login")
+      navigate("/login") // Si l'utilisateur n'est pas connecté, il retourne à la page login
     }
   }, [token, navigate, dispatch, error]);
 

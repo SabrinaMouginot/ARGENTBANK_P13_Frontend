@@ -12,10 +12,9 @@ const initialState = {
 export const login = createAsyncThunk('auth/login', async (credentials, {rejectWithValue}) => {
   try {
     const response = await axios.post('http://localhost:3001/api/v1/user/login', credentials);
-    console.log (response)
-    return response.data;
+    return response.data; // si email et passeword ok, je retourne les données du serveur (token)
   } catch (e) {
-    return rejectWithValue(e.response.data.message)
+    return rejectWithValue(e.response.data.message) // si email et password pas ok, je retourne le msg d'erreur du serveur
   }
 });
 
@@ -30,17 +29,19 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // si login en cours, je modifie mon état.
       .addCase(login.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
+      // si login ok, je modifie mon état.
       .addCase(login.fulfilled, (state, action) => {
         state.isAuthenticated = true;
         state.token = action.payload.body.token;
         state.loading = false;
       })
+      // si login pas ok, je modifie mon état
       .addCase(login.rejected, (state, action) => {
-        console.log(action)
         state.error = action.payload;
         state.loading = false;
       });

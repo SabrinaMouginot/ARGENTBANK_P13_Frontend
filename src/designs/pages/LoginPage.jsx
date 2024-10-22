@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { error, isAuthenticated, loading } = useSelector(state => state.auth)
+  const { error, isAuthenticated, loading } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,9 +19,10 @@ function LoginPage() {
     }
   }, [isAuthenticated, navigate]);
 
+  // fonction appelé lors de la soumission du formulaire par l'utilisateur
   const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(login({ email, password }));
+    e.preventDefault(); // empêche le rechargement de la page
+    dispatch(login({ email, password })); // appel l action login, avec email et password en payload
   };
 
   return (
